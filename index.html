@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+   
+    <title>ATV4 -LabWeb</title>
+  </head>
+        
+  <body>
+    <div class = "row">
+
+   
+            <div class="column" id="leftMargin">
+                <div class="personagens" id="farmer">👨‍🌾</div>
+                <div class="personagens" id="wolf">🐺</div>
+                <div class="personagens" id="sheep">🐏</div>
+                <div class="personagens" id="lettuce">🥬</div>
+                <div id="setaParaDireita">➡</div> 
+            </div>
+            
+            <div class="column" id="river">
+            
+                    <div class="barco" id="idaParaDireita">🛥</div>  
+                    <div class="barco" id="voltaParaEsquerda">🛥</div>
+            
+            </div>
+            
+            <div class="column" id="rightMargin">
+                <div id="setaParaEsquerda">⬅</div>
+            </div>
+
+ </div>
+
+    <script>
+
+            const farmer = document.querySelector("#farmer");
+            const wolf = document.querySelector("#wolf");
+            const sheep = document.querySelector("#sheep");
+            const lettuce= document.querySelector("#lettuce");
+
+            const setaParaDireita = document.querySelector("#setaParaDireita"); //desce
+            const setaParaEsquerda = document.querySelector("#setaParaEsquerda"); //sobe
+
+            farmer.addEventListener("click", moveFarmer);
+            wolf.addEventListener("click", moveWolf);
+            sheep.addEventListener("click", moveSheep);
+            lettuce.addEventListener("click", moveLettuce);
+
+            setaParaDireita.addEventListener("click", irDirparaEsq);
+            setaParaEsquerda.addEventListener("click", irEsqparaDir);
+
+            function moveFarmer(event) {
+            embarque_desembarque(farmer);
+            }
+
+            function moveWolf(event) {
+            embarque_desembarque(wolf);
+            }
+
+            function moveSheep(event) {
+            embarque_desembarque(sheep);
+            }
+
+            function moveLettuce(event) {
+            embarque_desembarque(lettuce);
+            }
+            
+            function avaliaIda() {
+            if (farmer.parentElement == idaParaDireita) return true;
+            else return false;
+            }
+
+            function avaliaVolta() {
+            if (farmer.parentElement == voltaParaEsquerda) return true;
+            else return false;
+            }
+
+            function irDirparaEsq(event) {
+            if (avaliaIda() == true) {
+                while (idaParaDireita.firstChild) voltaParaEsquerda.appendChild(idaParaDireita.firstChild);
+                voltaParaEsquerda.style.visibility = "visible";
+                idaParaDireita.style.visibility = "hidden";
+            }
+            }
+
+            function irEsqparaDir(event) {
+            if (avaliaVolta() == true) {
+                while (voltaParaEsquerda.firstChild) idaParaDireita.appendChild(voltaParaEsquerda.firstChild);
+                idaParaDireita.style.visibility = "visible";
+                voltaParaEsquerda.style.visibility = "hidden";
+            }
+            }
+
+            function embarque_desembarque(passageiro) {
+            //IR DA DIREITA PARA A ESQUERDA
+            if (passageiro.parentElement == leftMargin) {
+                if (idaParaDireita.childElementCount == 2) return;
+                else idaParaDireita.appendChild(passageiro);
+            } else if (passageiro.parentElement == idaParaDireita)
+                rightMargin.appendChild(passageiro);
+            //VOLTAR DA ESQUERDA PARA A DIREITA
+            else if (passageiro.parentElement == rightMargin) {
+                if (voltaParaEsquerda.childElementCount == 2) return;
+                else voltaParaEsquerda.appendChild(passageiro);
+            } else if (passageiro.parentElement == voltaParaEsquerda)
+            leftMargin.appendChild(passageiro);
+            }
+            
+    </script>
+  </body>
+</html>

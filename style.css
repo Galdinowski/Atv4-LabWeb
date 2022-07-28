@@ -1,0 +1,73 @@
+body
+{
+    background-image: url(river.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh; 
+}
+  
+ 
+  
+  #margemcima {
+    color: white;
+   
+    
+  }
+  
+
+  #margembaixo {
+    color: white;
+   
+   
+  }
+  
+  
+  .personagens {
+    display: inline-block;
+    font-size: 4em;
+    
+  }
+  
+  #setaParaDireita {
+    float: right;
+    font-size: 6em;
+    color: white;
+  }
+  
+  #setaParaEsquerda{
+    float: left;
+    font-size: 6em;
+    color: white;
+  }
+  
+  .barco {
+    
+    
+    display: flex;
+    font-size : 11em;
+    justify-content: center;
+   
+    
+  }
+  
+  #baixo {
+    visibility: hidden;
+  }
+
+  .column {
+    float: left;
+    width: 33.33%;
+    height:100vh;
+    flex-flow: column wrap;
+    align-items: stretch;
+    align-content: stretch;
+    
+  }
+
+  .row:after {
+    content: "";
+    display:inline-block;
+    height:100vh;
+    clear: both;
+  }
