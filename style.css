@@ -1,67 +1,55 @@
-body
-{
-    background-image: url(river.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh; 
+body {
+  overflow: hidden;
+  background-image: url(river.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
-  
-  p
-  {
-         text-align:center;
-  }
-  
-  .barco
-  {
-    font-size: 11em;
-  }
-  #idaParaDireita
-  {
-    
-    position: relative;
-    right:150px;
-    top:900px;
-    
-    
-    
-    
-  }
-  #voltaPelaEsquerda
-  {
-    position: relative;
-    left:-360px;
-    bottom:-600px;
-    transform: rotate3d(1,20,0, -180deg);
-  
-    
-    
-  }
-  .personagens {
-    display: inline-block;
-    font-size: 4em;
-    
-  }
 
-  .column {
-    float: left;
-    width: 33.33%;
-    height:100vh;
-    flex-flow: column wrap;
-    align-items: stretch;
-    align-content: stretch;
-    
-  }
+p {
+  text-align: center;
+  cursor: pointer;
+}
+
+.barco {
+  display: inline-block;
+  font-size: 12em;
+}
+
+#idaParaDireita {
+    margin-top: 35vh;
+    margin-left: -38vh;
+    position: absolute;
+}
+
+#voltaPelaEsquerda {
+  margin-left: 33vh;
+  margin-top: 36vh;
+  transform: rotate3d(0, 20, 0, -180deg);
+}
+
+.personagens {
+  display: inline-block;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  height: 100vh;
+  flex-flow: column wrap;
+  align-items: stretch;
+  align-content: stretch;
+
+}
+
+.reset-button {
+  font-size: 4em;
+}
 
 
-
-  .reset-button
-  {
-    font-size: 4em;
-  }
- 
- 
-.personagens:active
-{
+.personagens:active {
   font-size: 2em;
 }
