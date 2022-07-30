@@ -18,40 +18,42 @@
                 <div class="personagens" id="wolf">🐺</div>
                 <div class="personagens" id="sheep">🐏</div>
                 <div class="personagens" id="lettuce">🥬</div>
-                <div id="setaParaDireita">➡</div> 
+                
             </div>
             
             <div class="column" id="river">
-            
+                <p><input type="button" class="reset-button" value="Recomecar"> </p>
                     <div class="barco" id="idaParaDireita">🛥</div>  
-                    <div class="barco" id="voltaParaEsquerda">🛥</div>
+                    <div class="barco" id="voltaPelaEsquerda">🛥</div>
             
             </div>
             
             <div class="column" id="rightMargin">
-                <div id="setaParaEsquerda">⬅</div>
+                
+               
             </div>
 
+          
+            
  </div>
 
     <script>
+                window.alert("Contexto: Voce precisa mover todas as posses do fazendeiro para outra margem, O FAZENDEIRO PRECISA SER SEMPRE O PRIMEIRO ESCOLHIDO(tanto na ida quanto na volta)");
+                window.alert("O fazendeiro poderia levar apenas a si mesmo e uma única de suas compras — o lobo, o carneiro, ou a alface. Se fossem deixados sozinhos em uma mesma margem, o lobo comeria o carneiro e o carneiro comeria a alface. ")
 
             const farmer = document.querySelector("#farmer");
             const wolf = document.querySelector("#wolf");
             const sheep = document.querySelector("#sheep");
             const lettuce= document.querySelector("#lettuce");
 
-            const setaParaDireita = document.querySelector("#setaParaDireita"); //desce
-            const setaParaEsquerda = document.querySelector("#setaParaEsquerda"); //sobe
+           
 
             farmer.addEventListener("click", moveFarmer);
             wolf.addEventListener("click", moveWolf);
             sheep.addEventListener("click", moveSheep);
             lettuce.addEventListener("click", moveLettuce);
 
-            setaParaDireita.addEventListener("click", irDirparaEsq);
-            setaParaEsquerda.addEventListener("click", irEsqparaDir);
-
+        
             function moveFarmer(event) {
             embarque_desembarque(farmer);
             }
@@ -74,39 +76,82 @@
             }
 
             function avaliaVolta() {
-            if (farmer.parentElement == voltaParaEsquerda) return true;
+            if (farmer.parentElement == voltaPelaEsquerda) return true;
             else return false;
             }
 
-            function irDirparaEsq(event) {
-            if (avaliaIda() == true) {
-                while (idaParaDireita.firstChild) voltaParaEsquerda.appendChild(idaParaDireita.firstChild);
-                voltaParaEsquerda.style.visibility = "visible";
-                idaParaDireita.style.visibility = "hidden";
-            }
+            function irDirparaEsq(event) //movim
+            {
+                    if (avaliaIda() == true)
+                    {
+                        while(idaParaDireita.firstChild)voltaPelaEsquerda.appendChild(idaParaDireita.firstChild);
+                        {
+                        
+                            voltaPelaEsquerda.style.visibility = "hidden";
+                            idaParaDireita.style.visibility = "visible"
+                        
+                        
+                        }
+                    }
             }
 
-            function irEsqparaDir(event) {
-            if (avaliaVolta() == true) {
-                while (voltaParaEsquerda.firstChild) idaParaDireita.appendChild(voltaParaEsquerda.firstChild);
-                idaParaDireita.style.visibility = "visible";
-                voltaParaEsquerda.style.visibility = "hidden";
-            }
+            function irEsqparaDir(event) 
+            {
+                if (avaliaVolta() == true) 
+                {
+                    while (voltaPelaEsquerda.firstChild) idaParaDireita.appendChild(voltaPelaEsquerda.firstChild);
+                    idaParaDireita.style.visibility = "hidden";
+                    voltaPelaEsquerda.style.visibility = "visible";
+                }
             }
 
-            function embarque_desembarque(passageiro) {
+            function embarque_desembarque(passageiro) 
+            {
             //IR DA DIREITA PARA A ESQUERDA
-            if (passageiro.parentElement == leftMargin) {
-                if (idaParaDireita.childElementCount == 2) return;
-                else idaParaDireita.appendChild(passageiro);
-            } else if (passageiro.parentElement == idaParaDireita)
-                rightMargin.appendChild(passageiro);
-            //VOLTAR DA ESQUERDA PARA A DIREITA
-            else if (passageiro.parentElement == rightMargin) {
-                if (voltaParaEsquerda.childElementCount == 2) return;
-                else voltaParaEsquerda.appendChild(passageiro);
-            } else if (passageiro.parentElement == voltaParaEsquerda)
-            leftMargin.appendChild(passageiro);
+                   
+                            if (passageiro.parentElement == leftMargin) 
+                            {
+                                    if (idaParaDireita.childElementCount == 2) return;
+                                    else idaParaDireita.appendChild(passageiro);
+                                } else if (passageiro.parentElement == idaParaDireita)
+                                    if(avaliaIda())
+                                    {
+                                        rightMargin.appendChild(passageiro);
+                                    }
+                                    else
+                                    {
+                                        leftMargin.appendChild(passageiro);
+                                    }
+
+                                    
+                                
+                                    //VOLTAR DA ESQUERDA PARA A DIREITA
+                                else if (passageiro.parentElement == rightMargin) 
+                                {
+                                    if (voltaPelaEsquerda.childElementCount == 2) return;
+                                    else voltaPelaEsquerda.appendChild(passageiro);
+                                } else if (passageiro.parentElement == voltaPelaEsquerda)
+
+                                if (avaliaVolta())
+                                { 
+                                    leftMargin.appendChild(passageiro);
+                                }
+                                else
+                                {
+                                    rightMargin.appendChild(passageiro);
+                                }
+                                  
+                    }
+             
+
+            const reset = document.querySelector('reset-button');
+
+            reset.appendChild('click',recomecar);
+
+            function recomecar()
+            {  
+               console.log("PASSOU")
+                window.alert("BOTAO APERTADO")
             }
             
     </script>

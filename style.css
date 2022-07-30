@@ -7,52 +7,40 @@ body
     height: 100vh; 
 }
   
- 
+  p
+  {
+         text-align:center;
+  }
   
-  #margemcima {
-    color: white;
-   
+  .barco
+  {
+    font-size: 11em;
+  }
+  #idaParaDireita
+  {
+    
+    position: relative;
+    right:150px;
+    top:900px;
+    
+    
+    
     
   }
+  #voltaPelaEsquerda
+  {
+    position: relative;
+    left:-360px;
+    bottom:-600px;
+    transform: rotate3d(1,20,0, -180deg);
   
-
-  #margembaixo {
-    color: white;
-   
-   
+    
+    
   }
-  
-  
   .personagens {
     display: inline-block;
     font-size: 4em;
     
-  }
-  
-  #setaParaDireita {
-    float: right;
-    font-size: 6em;
-    color: white;
-  }
-  
-  #setaParaEsquerda{
-    float: left;
-    font-size: 6em;
-    color: white;
-  }
-  
-  .barco {
-    
-    
-    display: flex;
-    font-size : 11em;
-    justify-content: center;
-   
-    
-  }
-  
-  #baixo {
-    visibility: hidden;
   }
 
   .column {
@@ -65,9 +53,15 @@ body
     
   }
 
-  .row:after {
-    content: "";
-    display:inline-block;
-    height:100vh;
-    clear: both;
+
+
+  .reset-button
+  {
+    font-size: 4em;
   }
+ 
+ 
+.personagens:active
+{
+  font-size: 2em;
+}
